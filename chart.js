@@ -2,7 +2,7 @@ import Chart from "chart.js/auto";
 
 let chartInstance = null;
 
-export function renderChart(appData) {
+export function renderChart(carbs, protein, fat) {
   chartInstance?.destroy();
 
   const context = document.querySelector("#app-chart").getContext("2d");
@@ -14,7 +14,7 @@ export function renderChart(appData) {
       datasets: [
         {
           label: "Macronutrients",
-          data: [appData.totalCarbs, appData.totalProtein, appData.totalFat],
+          data: [carbs, protein, fat],
           backgroundColor: ["#25AEEE", "#FECD52", "#57D269"],
         },
       ],

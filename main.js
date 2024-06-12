@@ -45,7 +45,7 @@ function updateTotalCalories() {
 }
 
 function render() {
-  renderChart(appData);
+  renderChart(appData.totalCarbs, appData.totalProtein, appData.totalFat);
   updateTotalCalories();
 }
 
