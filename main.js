@@ -5,7 +5,7 @@ import { FetchWrapper } from "./fetch-wrapper";
 import { calculateCalories, capitalize } from "./utils";
 
 const API = new FetchWrapper(
-  "https://firestore.googleapis.com/v1/projects/jsdemo-3f387/databases/(default)/documents/0x"
+  "https://firestore.googleapis.com/v1/projects/jsdemo-3f387/databases/(default)/documents/m-zelinka"
 );
 
 const appData = new AppData();
