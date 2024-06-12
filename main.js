@@ -1,3 +1,4 @@
+import snackbar from "snackbar";
 import { FetchWrapper } from "./fetch-wrapper";
 import { calculateCalories, capitalize } from "./utils";
 
@@ -24,10 +25,14 @@ form.addEventListener("submit", (event) => {
     },
   }).then((data) => {
     console.log(data);
+
     if (data.error) {
       // there was an error
+      snackbar.show("Some data is missing.");
       return;
     }
+
+    snackbar.show("Food added successfully.");
 
     list.insertAdjacentHTML(
       "beforeend",
