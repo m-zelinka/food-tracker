@@ -1,13 +1,13 @@
 import Chart from "chart.js/auto";
 
-let chartInstance = null;
+let instance = null;
 
 export function renderChart(carbs, protein, fat) {
-  chartInstance?.destroy();
+  instance?.destroy();
 
-  const context = document.querySelector("#app-chart").getContext("2d");
+  const ctx = document.querySelector("#app-chart").getContext("2d");
 
-  chartInstance = new Chart(context, {
+  instance = new Chart(ctx, {
     type: "doughnut",
     data: {
       labels: ["Carbs", "Protein", "Fat"],
