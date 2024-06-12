@@ -1,10 +1,14 @@
 import snackbar from "snackbar";
+import { AppData } from "./app-data";
+import { renderChart } from "./chart";
 import { FetchWrapper } from "./fetch-wrapper";
 import { calculateCalories, capitalize } from "./utils";
 
 const API = new FetchWrapper(
   "https://firestore.googleapis.com/v1/projects/jsdemo-3f387/databases/(default)/documents/0x"
 );
+
+const appData = new AppData();
 
 const list = document.querySelector("#food-list");
 const form = document.querySelector("#create-form");
@@ -14,6 +18,7 @@ const protein = document.querySelector("#create-protein");
 const fat = document.querySelector("#create-fat");
 
 function displayEntry(name, carbs, protein, fat) {
+  appData.addFood(carbs, protein, fat);
   list.insertAdjacentHTML(
     "beforeend",
     `<li class="card">
@@ -56,6 +61,7 @@ form.addEventListener("submit", (event) => {
     snackbar.show("Food added successfully.");
 
     displayEntry(name.value, carbs.value, protein.value, fat.value);
+    renderChart(appData);
 
     name.value = "";
     carbs.value = "";
@@ -77,6 +83,7 @@ function init() {
         fields.fat.integerValue
       );
     });
+    renderChart(appData);
   });
 }
 
