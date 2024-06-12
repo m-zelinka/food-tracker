@@ -22,4 +22,8 @@ export class AppData {
   get totalFat() {
     return this.food.reduce((total, current) => total + current.fat, 0);
   }
+
+  get totalCalories() {
+    return this.totalCarbs * 4 + this.totalProtein * 4 + this.totalFat * 9;
+  }
 }

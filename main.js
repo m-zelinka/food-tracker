@@ -16,6 +16,7 @@ const name = document.querySelector("#create-name");
 const carbs = document.querySelector("#create-carbs");
 const protein = document.querySelector("#create-protein");
 const fat = document.querySelector("#create-fat");
+const totalCalories = document.querySelector("#total-calories");
 
 function displayEntry(name, carbs, protein, fat) {
   appData.addFood(carbs, protein, fat);
@@ -37,6 +38,15 @@ function displayEntry(name, carbs, protein, fat) {
         </div>
       </li>`
   );
+}
+
+function updateTotalCalories() {
+  totalCalories.textContent = appData.totalCalories;
+}
+
+function render() {
+  renderChart(appData);
+  updateTotalCalories();
 }
 
 form.addEventListener("submit", (event) => {
@@ -61,7 +71,7 @@ form.addEventListener("submit", (event) => {
     snackbar.show("Food added successfully.");
 
     displayEntry(name.value, carbs.value, protein.value, fat.value);
-    renderChart(appData);
+    render();
 
     name.value = "";
     carbs.value = "";
@@ -83,7 +93,7 @@ function init() {
         fields.fat.integerValue
       );
     });
-    renderChart(appData);
+    render();
   });
 }
 
